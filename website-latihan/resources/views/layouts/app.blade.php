@@ -5,24 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#103d31">
     <meta name="description" content="@yield('description', 'Hidayatullah Depok, ikhtiar membangun generasi berilmu, berakhlak, dan bermanfaat bagi masyarakat.')">
-    <title>@yield('title') | Hidayatullah Depok</title>
+    <meta name="description" content="@yield('description', 'Angkatan 14 Al-Muntadhorun, Ma\'had Ahlus Shuffah.')">
+    <title>@yield('title') | Angkatan 14 Al-Muntadhorun</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --green: #103d31;
-            --green-deep: #0a2c24;
-            --green-soft: #eaf0ec;
-            --gold: #c69b50;
-            --ink: #17241f;
-            --muted: #64716b;
-            --paper: #fbfaf6;
+            --green: #12392e;
+            --green-deep: #081d18;
+            --green-soft: #e8eee8;
+            --gold: #c6a45e;
+            --ink: #111814;
+            --muted: #68716b;
+            --paper: #f7f7f2;
             --white: #fff;
             --line: #e4e6df;
-            --serif: Georgia, 'Times New Roman', serif;
+            --serif: 'Cormorant Garamond', Georgia, serif;
             --sans: 'DM Sans', 'Segoe UI', sans-serif;
-            --display: 'Manrope', 'Segoe UI', sans-serif;
+            --display: 'DM Sans', 'Segoe UI', sans-serif;
         }
 
         *, *::before, *::after { box-sizing: border-box; }
@@ -222,35 +223,162 @@
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
         }
+        .site-header { position: sticky; top: 0; border-bottom: 1px solid rgba(17,24,20,.08); }
+        .brand { gap: 11px; }
+        .brand-mark { width: 42px; height: 42px; border: 0; overflow: hidden; }
+        .brand-mark img { width: 100%; height: 100%; object-fit: cover; }
+        .brand-name { color: var(--ink); font-size: 13px; }
+        .brand-name span { color: var(--muted); font-size: 9px; letter-spacing: .5px; }
+        .main-nav { gap: clamp(12px, 1.7vw, 23px); }
+        .main-nav a { color: #38443d; font-size: 11px; }
+        .cohort-hero { position: relative; overflow: hidden; background: var(--green-deep); color: var(--white); }
+        .cohort-hero::before { position: absolute; inset: 0; background: repeating-linear-gradient(135deg, transparent 0 42px, rgba(255,255,255,.025) 43px 44px); content: ''; pointer-events: none; }
+        .cohort-hero::after { position: absolute; top: -190px; right: -90px; width: 520px; height: 520px; border: 1px solid rgba(198,164,94,.22); border-radius: 50%; box-shadow: 0 0 0 34px rgba(255,255,255,.018), 0 0 0 72px rgba(255,255,255,.014); content: ''; pointer-events: none; }
+        .cohort-hero-inner { position: relative; z-index: 1; display: grid; width: min(1160px, calc(100% - 48px)); min-height: 610px; grid-template-columns: 1.2fr .8fr; align-items: center; gap: 60px; margin-inline: auto; padding-block: 80px; }
+        .cohort-hero-copy { max-width: 700px; animation: rise-in .7s ease both; }
+        .cohort-kicker { margin: 0 0 18px; color: #d7bc7d; font-size: 11px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; }
+        .cohort-hero h1 { max-width: 650px; margin: 0; font-family: var(--display); font-size: 68px; font-weight: 700; line-height: 1.04; }
+        .cohort-hero h1 em { color: #d9bb76; font-family: var(--serif); font-size: 1.12em; font-weight: 500; }
+        .cohort-arabic { margin: 15px 0 0; color: rgba(255,255,255,.78); font-size: 23px; }
+        .cohort-motto { max-width: 520px; margin: 29px 0 0; color: rgba(255,255,255,.83); font-family: var(--serif); font-size: 26px; line-height: 1.35; }
+        .cohort-hero-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+        .cohort-hero-links .button { min-height: 46px; }
+        .cohort-emblem { width: min(100%, 350px); justify-self: center; padding: 14px; border: 1px solid rgba(198,164,94,.7); background: #080a09; box-shadow: 0 24px 70px rgba(0,0,0,.26); animation: emblem-in .9s .12s ease both; }
+        .cohort-emblem img { width: 100%; aspect-ratio: 768 / 1365; object-fit: contain; }
+        .section--cohort { padding-block: 88px; scroll-margin-top: 82px; }
+        .section-heading { display: grid; grid-template-columns: 1fr minmax(240px, .75fr); align-items: end; gap: 35px; margin-bottom: 40px; }
+        .section-heading .section-copy { margin: 0; }
+        .section-kicker { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 13px; color: #947338; font-size: 10px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; }
+        .program-band .section-kicker { color: #dfbd7d; }
+        .section-kicker::before { width: 24px; height: 1px; background: currentColor; content: ''; }
+        .section-title { font-size: 42px; }
+        .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #dfe3dc; }
+        .profile-item { min-height: 160px; padding: 28px; background: var(--white); }
+        .profile-item span { display: block; margin-bottom: 14px; color: #947338; font-size: 10px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; }
+        .profile-item strong { display: block; color: var(--green); font-family: var(--display); font-size: 20px; line-height: 1.45; }
+        .profile-item--motto strong { font-family: var(--serif); font-size: 27px; }
+        .timeline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,.18); }
+        .timeline-item { min-height: 210px; padding: 28px; background: var(--green); }
+        .timeline-index { color: #d7bc7d; font-family: var(--serif); font-size: 28px; }
+        .timeline-item h3 { margin: 25px 0 8px; font-family: var(--display); font-size: 17px; }
+        .timeline-item p { margin: 0; color: rgba(255,255,255,.7); font-size: 12px; }
+        .achievement { min-height: 245px; padding: 30px; border-top: 2px solid var(--gold); background: var(--white); }
+        .achievement-year { color: #947338; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; }
+        .achievement h3 { margin: 30px 0 12px; color: var(--green); font-family: var(--display); font-size: 25px; }
+        .achievement p { max-width: 390px; margin: 0; color: var(--muted); font-size: 13px; }
+        .empty-state { display: grid; min-height: 205px; place-content: center; justify-items: center; padding: 28px; border: 1px dashed #b8c0b7; background: rgba(255,255,255,.58); text-align: center; }
+        .empty-state strong { color: var(--green); font-family: var(--display); font-size: 17px; }
+        .empty-state p { max-width: 440px; margin: 8px 0 0; color: var(--muted); font-size: 12px; }
+        .member-count { display: inline-flex; align-items: center; gap: 10px; margin-top: 20px; color: #947338; font-size: 11px; font-weight: 700; }
+        .member-count::before, .member-count::after { width: 28px; height: 1px; background: var(--gold); content: ''; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); gap: 18px; }
+        .gallery-card { min-width: 0; margin: 0; background: var(--white); }
+        .gallery-trigger { position: relative; display: block; width: 100%; aspect-ratio: 4 / 3; overflow: hidden; padding: 0; border: 0; background: #e8eee8; cursor: zoom-in; text-align: left; }
+        .gallery-trigger img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
+        .gallery-trigger:hover img, .gallery-trigger:focus-visible img { transform: scale(1.035); }
+        .gallery-trigger-label { position: absolute; right: 12px; bottom: 12px; display: flex; align-items: center; gap: 8px; padding: 8px 11px; background: rgba(8,29,24,.9); color: var(--white); font-size: 10px; font-weight: 700; }
+        .gallery-trigger-label span { color: #dfbd7d; font-size: 14px; }
+        .gallery-caption { padding: 13px 15px 15px; color: var(--green); font-size: 12px; font-weight: 600; }
+        .gallery-lightbox { width: min(1120px, calc(100vw - 32px)); max-width: none; max-height: calc(100vh - 32px); padding: 0; overflow: hidden; border: 1px solid rgba(223,189,125,.42); background: #08110e; color: var(--white); }
+        .gallery-lightbox::backdrop { background: rgba(3,9,7,.88); backdrop-filter: blur(5px); }
+        .gallery-lightbox[open] .gallery-lightbox-inner { animation: gallery-open .22s ease-out both; }
+        .gallery-lightbox-inner { padding: 16px; }
+        .gallery-lightbox-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 12px; color: #dfbd7d; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+        .gallery-lightbox-close { display: grid; width: 38px; height: 38px; place-items: center; border: 1px solid rgba(255,255,255,.32); background: transparent; color: var(--white); cursor: pointer; font-size: 25px; line-height: 1; }
+        .gallery-lightbox-close:hover, .gallery-lightbox-close:focus-visible { background: var(--gold); color: var(--green-deep); }
+        .gallery-lightbox-image { width: 100%; max-height: min(76vh, 820px); object-fit: contain; }
+        .gallery-lightbox-caption { margin: 12px 0 0; color: rgba(255,255,255,.82); font-family: var(--serif); font-size: 20px; text-align: center; }
+        @media (max-width: 700px) {
+            .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+            .gallery-lightbox-inner { padding: 10px; }
+            .gallery-lightbox-image { max-height: 72vh; }
+            .gallery-lightbox-caption { font-size: 18px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .gallery-lightbox[open] .gallery-lightbox-inner { animation-duration: .01ms; }
+        }
+        @keyframes gallery-open { from { opacity: 0; transform: scale(.975); } to { opacity: 1; transform: scale(1); } }
+        .site-footer { border-top: 1px solid rgba(255,255,255,.12); }
+        .footer-copy { max-width: 300px; margin: 0; text-align: right; }
+        .footer-brand .brand-name { color: var(--white); }
+        .footer-brand .brand-name span { color: rgba(255,255,255,.62); }
+        .footer-nav { gap: 14px 20px; }
+        @keyframes rise-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes emblem-in { from { opacity: 0; transform: translateY(16px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        @media (max-width: 1000px) {
+            .desktop-nav { display: none; }
+            .mobile-menu { position: relative; display: block; }
+            .mobile-menu summary { display: flex; min-height: 42px; align-items: center; gap: 8px; color: var(--green); cursor: pointer; font-size: 12px; font-weight: 700; list-style: none; }
+            .mobile-menu summary::-webkit-details-marker { display: none; }
+            .menu-icon { display: grid; gap: 4px; }
+            .menu-icon i { display: block; width: 18px; height: 2px; background: var(--green); }
+            .mobile-menu[open] .main-nav { position: absolute; top: 50px; right: 0; display: grid; min-width: 230px; gap: 0; padding: 8px 16px; background: var(--white); box-shadow: 0 12px 30px rgba(16,61,49,.16); }
+            .mobile-menu .main-nav a { padding-block: 11px; border-bottom: 1px solid var(--line); }
+            .mobile-menu .main-nav a:last-child { border-bottom: 0; }
+            .cohort-hero-inner { grid-template-columns: 1.2fr .8fr; gap: 32px; }
+            .cohort-hero h1 { font-size: 56px; }
+            .cohort-emblem { width: min(100%, 290px); }
+        }
+        @media (max-width: 700px) {
+            .container, .cohort-hero-inner { width: min(100% - 36px, 560px); }
+            .header-inner { min-height: 70px; }
+            .cohort-hero-inner { min-height: 0; grid-template-columns: 1fr; gap: 38px; padding-block: 66px; }
+            .cohort-hero-copy { order: 2; }
+            .cohort-emblem { order: 1; width: min(56vw, 220px); }
+            .cohort-hero h1 { font-size: 48px; }
+            .cohort-motto { font-size: 23px; }
+            .section--cohort { padding-block: 64px; scroll-margin-top: 70px; }
+            .section-heading { grid-template-columns: 1fr; gap: 12px; margin-bottom: 28px; }
+            .section-title { font-size: 34px; }
+            .profile-grid, .timeline { grid-template-columns: 1fr; }
+            .profile-item { min-height: 130px; padding: 23px; }
+            .timeline-item { min-height: 165px; padding: 23px; }
+            .timeline-item h3 { margin-top: 18px; }
+            .achievement { min-height: 205px; padding: 25px; }
+            .achievement h3 { margin-top: 23px; }
+            .footer-inner { align-items: flex-start; flex-wrap: wrap; }
+            .footer-copy { order: 3; width: 100%; text-align: left; }
+        }
+        @media (max-width: 420px) {
+            .container, .cohort-hero-inner { width: calc(100% - 32px); }
+            .brand-name { font-size: 11px; }
+            .brand-name span { font-size: 8px; }
+            .cohort-hero h1 { font-size: 42px; }
+            .cohort-hero-links { align-items: stretch; flex-direction: column; max-width: 260px; }
+            .cohort-arabic { font-size: 21px; }
+            .profile-item--motto strong { font-size: 24px; }
+            .footer-nav { gap: 12px 15px; }
+        }
     </style>
 </head>
 <body>
     @php
         $navigation = [
-            ['label' => 'Beranda', 'route' => 'home'],
-            ['label' => 'Tentang Kami', 'route' => 'about'],
-            ['label' => 'Program', 'route' => 'programs'],
-            ['label' => 'Berita', 'route' => 'news'],
-            ['label' => 'Kontak', 'route' => 'contact'],
+            ['label' => 'Beranda', 'target' => 'beranda'],
+            ['label' => 'Profil Angkatan', 'target' => 'profil'],
+            ['label' => 'Perjalanan', 'target' => 'perjalanan'],
+            ['label' => 'PORSENI 2024', 'target' => 'porseni'],
+            ['label' => 'OSMA 2024–2025', 'target' => 'osma'],
+            ['label' => 'Galeri', 'target' => 'galeri'],
+            ['label' => 'Anggota', 'target' => 'anggota'],
         ];
     @endphp
     <header class="site-header">
         <div class="container header-inner">
-            <a class="brand" href="{{ route('home', absolute: false) }}" aria-label="Hidayatullah Depok, beranda">
-                <span class="brand-mark" aria-hidden="true">H</span>
-                <span class="brand-name">HIDAYATULLAH<span>DEPOK, JAWA BARAT</span></span>
+            <a class="brand" href="{{ route('home', absolute: false) }}#beranda" aria-label="Angkatan 14 Al-Muntadhorun, beranda">
+                <span class="brand-mark"><img src="{{ asset('image/logo almuntazhorun.jpeg') }}" alt=""></span>
+                <span class="brand-name">ANGKATAN 14<span>AL-MUNTADHORUN</span></span>
             </a>
             <nav class="main-nav desktop-nav" aria-label="Navigasi utama">
                 @foreach ($navigation as $item)
-                    <a href="{{ route($item['route'], absolute: false) }}" class="{{ request()->routeIs($item['route']) ? 'is-active' : '' }}" @if (request()->routeIs($item['route'])) aria-current="page" @endif>{{ $item['label'] }}</a>
+                    <a href="#{{ $item['target'] }}">{{ $item['label'] }}</a>
                 @endforeach
             </nav>
-            <a class="button header-cta" href="{{ route('contact', absolute: false) }}">Hubungi Kami <span class="arrow" aria-hidden="true">→</span></a>
             <details class="mobile-menu">
                 <summary aria-label="Buka menu navigasi"><span class="menu-icon" aria-hidden="true"><i></i><i></i><i></i></span> Menu</summary>
                 <nav class="main-nav" aria-label="Navigasi seluler">
                     @foreach ($navigation as $item)
-                        <a href="{{ route($item['route'], absolute: false) }}" class="{{ request()->routeIs($item['route']) ? 'is-active' : '' }}" @if (request()->routeIs($item['route'])) aria-current="page" @endif>{{ $item['label'] }}</a>
+                        <a href="#{{ $item['target'] }}">{{ $item['label'] }}</a>
                     @endforeach
                 </nav>
             </details>
@@ -261,16 +389,16 @@
     </main>
     <footer class="site-footer">
         <div class="container footer-inner">
-            <a class="brand footer-brand" href="{{ route('home', absolute: false) }}" aria-label="Kembali ke beranda Hidayatullah Depok">
-                <span class="brand-mark" aria-hidden="true">H</span>
-                <span class="brand-name">HIDAYATULLAH<span>DEPOK, JAWA BARAT</span></span>
+            <a class="brand footer-brand" href="{{ route('home', absolute: false) }}#beranda" aria-label="Kembali ke beranda Angkatan 14 Al-Muntadhorun">
+                <span class="brand-mark"><img src="{{ asset('image/logo almuntazhorun.jpeg') }}" alt=""></span>
+                <span class="brand-name">ANGKATAN 14<span>AL-MUNTADHORUN</span></span>
             </a>
             <nav class="footer-nav" aria-label="Navigasi footer">
                 @foreach ($navigation as $item)
-                    <a href="{{ route($item['route'], absolute: false) }}">{{ $item['label'] }}</a>
+                    <a href="#{{ $item['target'] }}">{{ $item['label'] }}</a>
                 @endforeach
             </nav>
-            <p class="footer-copy">© {{ date('Y') }} Hidayatullah Depok. Tumbuh dalam ilmu, mengabdi untuk umat.</p>
+            <p class="footer-copy">© {{ date('Y') }} Angkatan 14 Al-Muntadhorun · Ma'had Ahlus Shuffah</p>
         </div>
     </footer>
 </body>

@@ -7,28 +7,21 @@ use Tests\TestCase;
 
 class ExampleTest extends TestCase
 {
-    public function test_all_public_pages_render_with_shared_navigation(): void
+    public function test_homepage_renders_angkatan_profile_and_navigation(): void
     {
-        $pages = [
-            '/' => 'Tumbuh dalam ilmu',
-            '/tentang' => 'Tumbuh bersama, memberi manfaat',
-            '/program' => 'Jelajahi program',
-            '/berita' => 'Menguatkan silaturahmi',
-            '/kontak' => 'Ceritakan kebutuhan Anda',
-        ];
+        $response = $this->get('/')
+            ->assertOk()
+            ->assertSee('Angkatan 14 Al-Muntadhorun')
+            ->assertSee('Galeri Kenangan Al-Muntadhorun')
+            ->assertSeeText("Tekad Api Perubahan Mewujudkan Generasi Qur'ani.")
+            ->assertSee('alt="Logo Angkatan 14 Al-Muntadhorun"', false);
 
-        foreach ($pages as $uri => $content) {
-            $response = $this->get($uri)
-                ->assertOk()
-                ->assertSee('Tentang Kami')
-                ->assertSee('HIDAYATULLAH')
-                ->assertSeeText($content);
+        foreach (['Beranda', 'Profil Angkatan', 'Perjalanan', 'PORSENI 2024', 'OSMA 2024–2025', 'Galeri', 'Anggota'] as $label) {
+            $response->assertSeeText($label);
+        }
 
-            $response->assertDontSee('http://localhost:8000');
-
-            if ($uri === '/kontak') {
-                $response->assertSee('action="/kontak"', false);
-            }
+        foreach (['beranda', 'profil', 'perjalanan', 'porseni', 'osma', 'galeri', 'anggota'] as $section) {
+            $response->assertSee('id="'.$section.'"', false);
         }
     }
 
